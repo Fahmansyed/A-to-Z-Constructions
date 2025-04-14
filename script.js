@@ -77,13 +77,21 @@ hamburger.addEventListener('click', () => {
   navbar.classList.toggle('active');
 });
 
-
-
-// Close menu on link click (for mobile)
-document.querySelectorAll("#navLinks a").forEach(link => {
+// Close menu on nav link click
+document.querySelectorAll("#nav-links a").forEach(link => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
+    navbar.classList.remove("active");
   });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+  const isClickInside = navbar.contains(event.target);
+  if (!isClickInside) {
+    navLinks.classList.remove("active");
+    navbar.classList.remove("active");
+  }
 });
 
 const galleryItems = document.querySelectorAll(".gallery-item img");
